@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Utility.Pages.SettingsPage" xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize" xmlns:imageResource="clr-namespace:Utility.Extensions;assembly=Utility" BackgroundColor="{StaticResource brandGrey}">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ContentView x:Name="headerContent" AbsoluteLayout.LayoutBounds="0,0,1,100" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="{StaticResource brandBlue}">
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <iconize:IconImage HeightRequest="20" WidthRequest="20" Margin="5,0,0,0" Icon="fa-cog" IconColor="{StaticResource brandOrange}" />
+                    <Label Text="Settings" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                </StackLayout>
+            </ContentView>
+            <ScrollView x:Name="scrollView" Padding="20,80,20,0" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout>
+                    <!-- Account Summary -->
+                    <Frame HasShadow="false">
+                        <StackLayout>
+                            <Label FontSize="20" FontAttributes="Bold" Text="Update Your Information" TextColor="{StaticResource brandBlue}" />
+                            <Label FontSize="12" TextColor="Gray" Text="Easily update your information anytime by making changes below." />
+                        </StackLayout>
+                    </Frame>
+                    <!-- Billing Settings -->
+                    <StackLayout Padding="0,30,0,0">
+                        <StackLayout Orientation="Horizontal">
+                            <iconize:IconImage HeightRequest="20" WidthRequest="20" Margin="5,0,0,0" Icon="fa-user" IconColor="{StaticResource brandOrange}" />
+                            <Label Text="Contact Information" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource brandOrange}" />
+                        </StackLayout>
+                        <ContentView BackgroundColor="{StaticResource brandBlue}" HeightRequest="1" />
+                        <Label Text="Susan Customer" FontAttributes="Bold" Margin="0,20,0,0" />
+                        <Label Text="Phone Number" FontAttributes="Bold" Margin="0,20,0,10" />
+                        <Entry Text="(419) 123-4567" Keyboard="Telephone" />
+                        <Label Text="Receive Text Messages?" FontAttributes="Bold" Margin="0,20,0,10" />
+                        <Switch IsToggled="true" />
+                        <Label Text="Email" FontAttributes="Bold" Margin="0,20,0,10" />
+                        <Entry Text="sue.customer@email.com" Keyboard="Email" />
+                        <Label Text="Billing Address" FontAttributes="Bold" Margin="0,20,0,10" />
+                        <Entry Text="21234 Main St" Placeholder="Address 1" Keyboard="Default" />
+                        <Entry Text="" Placeholder="Address 2" Keyboard="Default" />
+                        <Entry Text="Cave Creek" Placeholder="City" Keyboard="Default" />
+                        <Entry Text="AZ" Placeholder="State" Keyboard="Default" />
+                        <Entry Text="85331-0007" Placeholder="Zip" Keyboard="Default" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <ContentView AbsoluteLayout.LayoutBounds="1,1,1,50" AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional" BackgroundColor="{StaticResource brandDarkBlue}">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding UpdateCommand}" />
+                </ContentView.GestureRecognizers>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="UPDATE" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                    <iconize:IconImage HeightRequest="15" WidthRequest="15" Margin="5,0,0,0" Icon="fa-check" IconColor="White" />
+                </StackLayout>
+            </ContentView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

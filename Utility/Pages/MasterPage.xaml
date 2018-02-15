@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize" xmlns:converters="clr-namespace:Utility.Converters;assembly=Utility" xmlns:imageResource="clr-namespace:Utility.Extensions;assembly=Utility" x:Class="Utility.Pages.MasterPage" Icon="hamburger.png" Title="Menu">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InvertBooleanConverter x:Key="invertBoolean">
+            </converters:InvertBooleanConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="White" Padding="0,50,0,0" Spacing="0">
+            <Image Source="{imageResource:ImageResource Utility.Resources.Images.logo.png}" HeightRequest="125"  Aspect="AspectFit" />
+            <ContentView BackgroundColor="{StaticResource brandGrey}" Margin="0,25,0,0">
+                <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+                    <StackLayout Orientation="Vertical" BackgroundColor="Transparent">
+                        <Label Text="Menu" TextColor="{StaticResource brandOrange}" Margin="20,20,0,30" FontSize="20" FontAttributes="Bold" />
+                        <ListView x:Name="listView" ItemsSource="{Binding MenuItems}" SelectedItem="{Binding SelectedItem}" VerticalOptions="FillAndExpand" SeparatorVisibility="None" BackgroundColor="Transparent">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="80">
+                                        <StackLayout Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                                            <ContentView WidthRequest="3" BackgroundColor="{StaticResource brandOrange}" IsVisible="{Binding Active}" />
+                                            <ContentView WidthRequest="3" BackgroundColor="{StaticResource brandGrey}" IsVisible="{Binding Active, Converter={StaticResource invertBoolean}}" />
+                                            <iconize:IconImage HeightRequest="20" WidthRequest="20" Margin="10,0,0,0" Icon="{Binding IconName}" IconColor="{StaticResource brandBlue}" />
+                                            <Label Text="{Binding Title}" FontSize="19" Margin="10,0,0,0" VerticalTextAlignment="Center" TextColor="Black" />
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>     
+            </ContentView>
+            <ContentView Padding="10" BackgroundColor="{StaticResource brandDarkBlue}">
+                <Label Text="©2018 Utility Corporation&#x0a;All rights reserved" TextColor="White" FontSize="12" Margin="0,0,0,5" HorizontalTextAlignment="Center"  />
+            </ContentView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

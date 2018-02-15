@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Utility.Pages.ServiceAppointmentsPage" xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize" BackgroundColor="{StaticResource brandGrey}">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ContentView x:Name="headerContent" AbsoluteLayout.LayoutBounds="0,0,1,100" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="{StaticResource brandBlue}">
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <iconize:IconImage HeightRequest="20" WidthRequest="20" Margin="5,0,0,0" Icon="fa-wrench" IconColor="{StaticResource brandOrange}" />
+                    <Label Text="Service Appointments" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                </StackLayout>
+            </ContentView>
+            <ScrollView x:Name="scrollView" Padding="10,80,10,40" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout>
+                    <Frame HasShadow="false" HeightRequest="200">
+                        <StackLayout Spacing="0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1.2*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                                    <Label Text="Date" FontAttributes="Bold" TextColor="{StaticResource brandBlue}" />
+                                    <iconize:IconImage HeightRequest="10" WidthRequest="10" Margin="5,0,0,0" Icon="fa-caret-down" IconColor="{StaticResource brandBlue}" />
+                                </StackLayout>
+                                <Label Grid.Row="0" Grid.Column="1" Text="Type" FontAttributes="Bold" />
+                                <Label Grid.Row="0" Grid.Column="2" Text="Status" FontAttributes="Bold" />
+                            </Grid>
+                            <ListView Margin="0,10,0,0" ItemsSource="{Binding AppointmentHistory}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" HasUnevenRows="true" SeparatorVisibility="None">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid Padding="0,5,0,15" VerticalOptions="CenterAndExpand">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1.2*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Row="0" Grid.Column="0" FontSize="14" Text="{Binding ScheduledTime, StringFormat='{0:MM/dd/yy hh:mm}'}" />
+                                                <Label Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding AppointmentType}" TextColor="Black" />
+                                                <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Horizontal">
+                                                    <Label FontSize="14" Text="{Binding Status}" TextColor="Black" />
+                                                    <iconize:IconImage HeightRequest="10" HorizontalOptions="EndAndExpand" WidthRequest="10" Icon="fa-chevron-right" IconColor="{StaticResource brandOrange}" />
+                                                </StackLayout>
+                                                <ContentView Grid.Row="2" Margin="0,10,0,0" Grid.ColumnSpan="3" HeightRequest="1" BackgroundColor="{StaticResource brandGrey}" />
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Frame>
+                    <!-- Billing Settings -->
+                    <StackLayout Padding="0,30,0,0">
+                        <StackLayout Orientation="Horizontal">
+                            <iconize:IconImage HeightRequest="20" WidthRequest="20" Margin="5,0,0,0" Icon="fa-plus" IconColor="{StaticResource brandOrange}" />
+                            <Label Text="New Service Appointment" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource brandOrange}" />
+                        </StackLayout>
+                        <ContentView BackgroundColor="{StaticResource brandBlue}" HeightRequest="1" />
+                        <!-- Service Type -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Service Type" />
+                        <Picker Title="Select Type" SelectedItem="{Binding ServiceType}" ItemsSource="{Binding ServiceTypes}" />
+                        <!-- Date -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Appointment Date" />
+                        <DatePicker Date="{Binding Date}" />
+                        <!-- Time -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Appointment Time" />
+                        <TimePicker Time="{Binding Time}" />
+                        <!-- Address 1 -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Address 1" />
+                        <Entry Text="{Binding Address1}" Placeholder="Address 1" />
+                        <!-- Address 2 -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Address 2" />
+                        <Entry Text="{Binding Address2}" Placeholder="Address 2" />
+                        <!-- City -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="City" />
+                        <Entry Text="{Binding City}" Placeholder="City" />
+                        <!-- State -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="State" />
+                        <Entry Text="{Binding State}" Placeholder="State" />
+                        <!-- Zip -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Zip Code" />
+                        <Entry Text="{Binding Zip}" Placeholder="Zip Code" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <ContentView AbsoluteLayout.LayoutBounds="1,1,1,50" AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional" BackgroundColor="{StaticResource brandDarkBlue}">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ScheduleServiceCommand}" />
+                </ContentView.GestureRecognizers>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="SCHEDULE SERVICE" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                    <iconize:IconImage HeightRequest="15" WidthRequest="15" Margin="5,0,0,0" Icon="fa-chevron-right" IconColor="White" />
+                </StackLayout>
+            </ContentView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

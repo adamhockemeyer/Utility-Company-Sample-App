@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Utility.Pages.UsagePage" xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize" xmlns:imageResource="clr-namespace:Utility.Extensions;assembly=Utility" BackgroundColor="{StaticResource brandGrey}">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ContentView x:Name="headerContent" AbsoluteLayout.LayoutBounds="0,0,1,100" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="{StaticResource brandBlue}">
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <iconize:IconImage HeightRequest="20" WidthRequest="20" Margin="5,0,0,0" Icon="fa-bar-chart" IconColor="{StaticResource brandOrange}" />
+                    <Label Text="Usage" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                </StackLayout>
+            </ContentView>
+            <Frame Margin="10,20,10,0" HasShadow="false" AbsoluteLayout.LayoutBounds="0,60,1,.89" AbsoluteLayout.LayoutFlags="SizeProportional">
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <Label Text="{Binding DateRanges}" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="{StaticResource brandOrange}" />
+                    <ScrollView x:Name="scrollView" Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                        <microcharts:ChartView x:Name="usageChart" VerticalOptions="FillAndExpand" WidthRequest="600" BackgroundColor="White" />
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+            <StackLayout x:Name="scrollShower" HorizontalOptions="Center" AbsoluteLayout.LayoutBounds="0,400,1,1" AbsoluteLayout.LayoutFlags="SizeProportional">
+                <iconize:IconImage HeightRequest="50" WidthRequest="50" Icon="fa-hand-o-up" IconColor="{StaticResource brandBlue}" />
+                <Label Text="Swipe to Scroll" HorizontalTextAlignment="Center" TextColor="{StaticResource brandBlue}" />
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

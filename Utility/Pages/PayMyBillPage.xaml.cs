@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using Utility.ViewModels;
+using Xamarin.Forms;
+
+namespace Utility.Pages
+{
+    public partial class PayMyBillPage : ContentPage
+    {
+        public PayMyBillViewModel ViewModel { get; set; }
+
+        public PayMyBillPage()
+        {
+            InitializeComponent();
+
+            BindingContext = ViewModel ?? new PayMyBillViewModel();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            scrollView.Scrolled += ScrollView_Scrolled;
+        }
+
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            scrollView.Scrolled -= ScrollView_Scrolled;
+        }
+
+        void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
+        {
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                double offset = headerContent.Height;
+
+                headerContent.Opacity = (offset - e.ScrollY) / offset;
+            });
+        }
+    }
+}

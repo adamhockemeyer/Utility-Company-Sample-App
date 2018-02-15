@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Title="Payment" BackgroundColor="{StaticResource brandGrey}" xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize" xmlns:imageResource="clr-namespace:Utility.Extensions;assembly=Utility" x:Class="Utility.Pages.PayMyBillPage">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ContentView x:Name="headerContent" AbsoluteLayout.LayoutBounds="0,0,1,100" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="{StaticResource brandBlue}">
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <iconize:IconImage HeightRequest="20" WidthRequest="20" Margin="5,0,0,0" Icon="fa-file-text" IconColor="{StaticResource brandOrange}" />
+                    <Label Text="Pay My Bill" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                </StackLayout>
+            </ContentView>
+            <ScrollView x:Name="scrollView" Padding="20,80" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout>
+                    <!-- Account Summary -->
+                    <Frame HasShadow="false">
+                        <StackLayout>
+                            <Label FontSize="20" FontAttributes="Bold" Text="Pay with checking or savings" TextColor="{StaticResource brandBlue}" />
+                            <Label FontSize="12" TextColor="Gray" Text="Your payment will be applied to your account on the date the payment is scheduled.  If choosing today's date, your payment will be applied the same day if you pay before 5:00pm CT, Monday through Friday (excluding holidays)." />
+                        </StackLayout>
+                    </Frame>
+                    <!-- Billing Settings -->
+                    <StackLayout Padding="0,30,0,0">
+                        <StackLayout Orientation="Horizontal">
+                            <iconize:IconImage HeightRequest="20" WidthRequest="20" Margin="5,0,0,0" Icon="fa-university" IconColor="{StaticResource brandOrange}" />
+                            <Label Text="Banking Information" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource brandOrange}" />
+                        </StackLayout>
+                        <ContentView BackgroundColor="{StaticResource brandBlue}" HeightRequest="1" />
+                        <!-- Account -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Choose Bank Account" />
+                        <Picker x:Name="pickerBankAccount" Title="Select Account" ItemsSource="{Binding BankAccounts}" />
+                        <!-- Type -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Bank Account Type" />
+                        <Picker x:Name="pickerBankAccountType" Title="Select Type" ItemsSource="{Binding AccountTypes}" />
+                        <!-- Routing -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Bank Routing Number" />
+                        <Entry Placeholder="9 Digit Bank Routing Number" Keyboard="Numeric" />
+                        <!-- Routing -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Bank Account Number" />
+                        <Entry Placeholder="Bank Account #, including zeros." Keyboard="Numeric" />
+                        <!-- Routing Confirm -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Confirm Bank Account Number" />
+                        <Entry Placeholder="Bank Account # again" Keyboard="Numeric" />
+                        <!-- Save Bank Information -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Save Bank Information?" />
+                        <Switch IsToggled="true" />
+                        <StackLayout Margin="0,20,0,0" Orientation="Horizontal">
+                            <Label Text="Current Balance Due" FontAttributes="Bold" />
+                            <Label Text="$95.70" />
+                        </StackLayout>
+                        <Label FontSize="14" Text="Amount due may not reflect the most recent account activity" />
+                        <!-- Payment Amount -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Payment Amount" />
+                        <Entry Text="95.70" Keyboard="Numeric" />
+                        <!-- Payment Date -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Select a Payment Date" />
+                        <DatePicker />
+                        <!-- Payment Due by -->
+                        <Label FontSize="14" Text="Payment due by: 02/12/18" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <ContentView AbsoluteLayout.LayoutBounds="1,1,1,50" AbsoluteLayout.LayoutFlags="WidthProportional,PositionProportional" BackgroundColor="{StaticResource brandDarkBlue}">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding ContinueCommand}" />
+                </ContentView.GestureRecognizers>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label Text="CONTINUE" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                    <iconize:IconImage HeightRequest="15" WidthRequest="15" Margin="5,0,0,0" Icon="fa-chevron-right" IconColor="White" />
+                </StackLayout>
+            </ContentView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

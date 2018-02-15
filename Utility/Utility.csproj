@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
+    <PackageReference Include="Microcharts" Version="0.7.1" />
+    <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
+    <PackageReference Include="Xam.FormsPlugin.Iconize" Version="1.0.10" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="2.0.2" />
+    <PackageReference Include="Xam.Plugins.Messaging" Version="5.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Converters\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Models\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Resources\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\" />
+    <Folder Include="Resources\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\Images\footer_bg_nv.png" />
+    <None Remove="Resources\Images\logo.png" />
+    <None Remove="Resources\Images\paperless.jpg" />
+    <None Remove="Resources\Images\smellgas.jpg" />
+    <None Remove="Resources\Images\technicianImage.jpg" />
+    <None Remove="Resources\Images\banner.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\footer_bg_nv.png" />
+    <EmbeddedResource Include="Resources\Images\logo.png" />
+    <EmbeddedResource Include="Resources\Images\paperless.jpg" />
+    <EmbeddedResource Include="Resources\Images\smellgas.jpg" />
+    <EmbeddedResource Include="Resources\Images\technicianImage.jpg" />
+    <EmbeddedResource Include="Resources\Images\banner.jpg" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" NavigationPage.TitleIcon="smallLogo.png" Title="Home" xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize" xmlns:imageResource="clr-namespace:Utility.Extensions;assembly=Utility" x:Class="Utility.Pages.HomePage" BackgroundColor="{StaticResource brandGrey}">
+    <ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="StartAndExpand" Padding="0,0,0,20" Spacing="0">
+                <StackLayout BackgroundColor="{StaticResource brandBlue}" Padding="5,20,5,20">
+                    <Label HorizontalTextAlignment="Center" Text="Celebrating 50 Years of Service" FontAttributes="Bold" TextColor="{StaticResource brandOrange}" />
+                    <Label HorizontalTextAlignment="Center" Text="We're grateful to be in this community and a part of your home and business.  We look forward to the next 50 years!" FontSize="13" TextColor="White" />
+                </StackLayout>
+                <AbsoluteLayout>
+                    <Image x:Name="bannerImage" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Source="{imageResource:ImageResource Utility.Resources.Images.banner.jpg}" Aspect="AspectFill" HeightRequest="250" />
+                    <Label x:Name="bannerTextPrimary" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="0,40,0,0" HorizontalTextAlignment="Center" Text="Premier Utility Solutions" FontAttributes="Bold" FontSize="28" TextColor="{StaticResource brandDarkBlue}" />
+                    <Label x:Name="bannerTextSecondary" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Margin="0,120,0,0" HorizontalTextAlignment="Center" Text="Local. Global." FontAttributes="Italic" TextColor="{StaticResource brandDarkBlue}" />
+                </AbsoluteLayout>
+                <Grid Padding="10" BackgroundColor="{StaticResource brandDarkBlue}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="1" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.ColumnSpan="3" Text="Call Before You Dig" TextColor="White" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="1" Grid.Column="0" FontSize="18" Text="Call 311" TextColor="White" FontAttributes="Italic" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CallCommand}" CommandParameter="311" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <ContentView Grid.Row="1" Grid.Column="1" HeightRequest="50" BackgroundColor="Black" />
+                    <Label Grid.Row="1" Grid.Column="2" FontSize="18" Text="Call Us" TextColor="White" FontAttributes="Italic" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CallCommand}" CommandParameter="(000) 000-0000" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+                <Frame Margin="30,20,30,0" Padding="20" HasShadow="false">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateCommand}" CommandParameter="AccountSummaryPage" />
+                        </StackLayout.GestureRecognizers>
+                        <iconize:IconImage HeightRequest="30" WidthRequest="30" Icon="fa-money" IconColor="{StaticResource brandBlue}" />
+                        <Label Text="Make a Payment" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="Center" />
+                        <iconize:IconImage HeightRequest="10" WidthRequest="10" HorizontalOptions="EndAndExpand" Icon="fa-chevron-right" IconColor="{StaticResource brandOrange}" />
+                    </StackLayout>
+                </Frame>
+                <Frame Margin="30,20,30,0" Padding="20" HasShadow="false">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateCommand}" CommandParameter="ServiceAppointmentsPage" />
+                        </StackLayout.GestureRecognizers>
+                        <iconize:IconImage HeightRequest="30" WidthRequest="30" Icon="fa-dashboard" IconColor="{StaticResource brandBlue}" />
+                        <Label Text="Start, Stop or Move Service" FontSize="15" FontAttributes="Bold" VerticalTextAlignment="Center" />
+                        <iconize:IconImage HeightRequest="10" WidthRequest="10" HorizontalOptions="EndAndExpand" Icon="fa-chevron-right" IconColor="{StaticResource brandOrange}" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

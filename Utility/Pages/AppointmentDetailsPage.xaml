@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Utility.Pages.AppointmentDetailsPage" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize" xmlns:imageResource="clr-namespace:Utility.Extensions;assembly=Utility" BackgroundColor="{StaticResource brandGrey}" Title="Details">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ContentView x:Name="headerContent" AbsoluteLayout.LayoutBounds="0,0,1,100" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="{StaticResource brandBlue}">
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <iconize:IconImage HeightRequest="20" WidthRequest="20" Margin="5,0,0,0" Icon="fa-wrench" IconColor="{StaticResource brandOrange}" />
+                    <Label Text="Appointment Details" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                </StackLayout>
+            </ContentView>
+            <ScrollView x:Name="scrollView" Padding="10,80,10,40" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout>
+                    <Frame HasShadow="false" HeightRequest="135">
+                        <StackLayout Spacing="0">
+                            <Label Text="Your Assigned Technician" FontAttributes="Bold" TextColor="{StaticResource brandBlue}" />
+                            <StackLayout Orientation="Horizontal" Margin="0,20,0,0">
+                                <controls:CircleImage Source="{imageResource:ImageResource Utility.Resources.Images.technicianImage.jpg}" WidthRequest="100" HeightRequest="100" Aspect="AspectFill" />
+                                <StackLayout>
+                                    <Label Text="Name" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource brandOrange}" />
+                                    <Label Text="{Binding TechnicianName}" FontSize="14" />
+                                    <Label Text="Contact Number" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource brandOrange}" />
+                                    <Label Text="{Binding TechnicianPhone}" FontSize="14" />
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <!-- Billing Settings -->
+                    <StackLayout Padding="0,30,0,0">
+                        <StackLayout Orientation="Horizontal">
+                            <iconize:IconImage HeightRequest="20" WidthRequest="20" Margin="5,0,0,0" Icon="fa-list" IconColor="{StaticResource brandOrange}" />
+                            <Label Text="Appointment Details" FontAttributes="Bold" FontSize="20" TextColor="{StaticResource brandOrange}" />
+                        </StackLayout>
+                        <ContentView BackgroundColor="{StaticResource brandBlue}" HeightRequest="1" />
+                        <!-- Service Type -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Service Type" />
+                        <Label Text="{Binding ServiceType}" Margin="10,0,0,0" TextColor="{StaticResource brandOrange}" />
+                        <!-- Date -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Appointment Date" />
+                        <Label Text="{Binding Date, StringFormat='{0:MM/dd/yy hh:mm tt}'}" Margin="10,0,0,0" TextColor="{StaticResource brandOrange}" />
+                        <!-- Address 1 -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Address 1" />
+                        <Label Text="{Binding Address1}" Margin="10,0,0,0" TextColor="{StaticResource brandOrange}" />
+                        <!-- Address 2 -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Address 2" />
+                        <Label Text="{Binding Address2}" Margin="10,0,0,0" TextColor="{StaticResource brandOrange}" />
+                        <!-- City -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="City" />
+                        <Label Text="{Binding City}" Margin="10,0,0,0" TextColor="{StaticResource brandOrange}" />
+                        <!-- State -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="State" />
+                        <Label Text="{Binding State}" Margin="10,0,0,0" TextColor="{StaticResource brandOrange}" />
+                        <!-- Zip -->
+                        <Label Margin="0,20,0,0" FontAttributes="Bold" Text="Zip Code" />
+                        <Label Text="{Binding Zip}" Margin="10,0,0,0" TextColor="{StaticResource brandOrange}" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

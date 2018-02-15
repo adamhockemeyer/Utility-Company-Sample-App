@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Utility.Pages.BillingPage" xmlns:iconize="clr-namespace:FormsPlugin.Iconize;assembly=FormsPlugin.Iconize" xmlns:imageResource="clr-namespace:Utility.Extensions;assembly=Utility" BackgroundColor="{StaticResource brandGrey}">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ContentView x:Name="headerContent" AbsoluteLayout.LayoutBounds="0,0,1,100" AbsoluteLayout.LayoutFlags="WidthProportional" BackgroundColor="{StaticResource brandBlue}">
+                <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                    <iconize:IconImage HeightRequest="20" WidthRequest="20" Margin="5,0,0,0" Icon="fa-history" IconColor="{StaticResource brandOrange}" />
+                    <Label Text="Billing History" FontSize="20" FontAttributes="Bold" TextColor="White" />
+                </StackLayout>
+            </ContentView>
+            <!--            <ContentView AbsoluteLayout.LayoutBounds="0,400,1,100" AbsoluteLayout.LayoutFlags="WidthProportional">
+                <Image Source="{imageResource:ImageResource SouthwestGas.Resources.Images.logo.png}" HeightRequest="100" Opacity=".1" Aspect="AspectFit" />
+            </ContentView>-->
+            <Frame Margin="10,20,10,0" HasShadow="false" AbsoluteLayout.LayoutBounds="0,60,1,.89" AbsoluteLayout.LayoutFlags="SizeProportional">
+                <StackLayout Spacing="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                            <Label Text="Date" FontAttributes="Bold" TextColor="{StaticResource brandBlue}" />
+                            <iconize:IconImage HeightRequest="10" WidthRequest="10" Margin="5,0,0,0" Icon="fa-caret-down" IconColor="{StaticResource brandBlue}" />
+                        </StackLayout>
+                        <Label Grid.Row="0" Grid.Column="1" Text="Amount" FontAttributes="Bold" />
+                    </Grid>
+                    <ListView Margin="0,10,0,0" ItemsSource="{Binding BillingHistory}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" HasUnevenRows="true" SeparatorVisibility="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="0,5,0,15">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" Grid.Column="0" FontSize="14" Text="{Binding Date, StringFormat='{0:MM/dd/yyyy}'}" />
+                                        <Label Grid.Row="0" Grid.Column="1" FontSize="14" Text="{Binding Amount, StringFormat='{0:C}'}" />
+                                        <StackLayout Grid.Row="0" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="End">
+                                            <Label FontSize="14" Text="View PDF" TextColor="{StaticResource brandBlue}" />
+                                            <iconize:IconImage HeightRequest="10" WidthRequest="10" Margin="5,0,0,0" Icon="fa-chevron-right" IconColor="{StaticResource brandOrange}" />
+                                        </StackLayout>
+                                        <ContentView Grid.Row="1" Margin="0,10,0,0" Grid.ColumnSpan="3" HeightRequest="1" BackgroundColor="{StaticResource brandGrey}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Frame>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
