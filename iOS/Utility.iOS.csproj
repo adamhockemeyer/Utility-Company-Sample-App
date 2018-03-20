@@ -183,6 +183,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Content\" />
     <Folder Include="Renderers\" />
+    <Folder Include="Effects\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -196,6 +197,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CustomWebViewRenderer.cs" />
+    <Compile Include="Effects\SwitchColorEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utility\Utility.csproj">

@@ -23,6 +23,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
     <Folder Include="Resources\Images\" />
+    <Folder Include="Effects\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\Images\footer_bg_nv.png" />
